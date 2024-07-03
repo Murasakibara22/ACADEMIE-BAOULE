@@ -13,7 +13,17 @@ return new class extends Migration
     {
         Schema::create('abonnements', function (Blueprint $table) {
             $table->id();
+            $table->string('libelle');
+            $table->float('prix');
+            $table->string('currency_code')->default('XOF');
+            $table->Boolean('status')->default(0);
+            $table->dateTime('date_debut')->nullable();
+            $table->dateTime('date_fin')->nullable();
+            $table->string('slug')->unique();
             $table->timestamps();
+
+            $table->foreignId('offer_id')->nullable();
+            $table->json('customers')->nullable();
         });
     }
 
