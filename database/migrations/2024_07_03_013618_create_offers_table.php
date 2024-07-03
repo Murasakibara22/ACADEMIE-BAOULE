@@ -13,6 +13,14 @@ return new class extends Migration
     {
         Schema::create('offers', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('customer_id')->constrained('customers')->onDelete('cascade');
+            $table->string('libelle');
+            $table->float('prix');
+            $table->string('currency_code')->default('XOF');
+            $table->json('avantages');
+            $table->integer('nb_users')->default(1);
+            $table->integer('nb_jours')->nullable();
+            $table->string('slug')->unique();
             $table->timestamps();
         });
     }

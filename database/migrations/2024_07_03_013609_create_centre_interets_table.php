@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('centre_interets', function (Blueprint $table) {
             $table->id();
+            $table->string('libelle');
+            $table->text('description')->nullable();
+            $table->string('slug')->unique();
             $table->timestamps();
         });
     }

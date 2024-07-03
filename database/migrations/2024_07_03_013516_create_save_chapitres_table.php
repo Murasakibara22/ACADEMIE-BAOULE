@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('save_chapitres', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('customer_id')->constrained('customers')->onDelete('cascade');
+            $table->foreignId('chapitre_id')->constrained('chapitres')->onDelete('cascade');
             $table->timestamps();
         });
     }

@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('parcours', function (Blueprint $table) {
             $table->id();
+            $table->string('libelle');
+            $table->text('description')->nullable();
+            $table->json('images')->nullable();
+            $table->string('slug')->unique();
             $table->timestamps();
         });
     }

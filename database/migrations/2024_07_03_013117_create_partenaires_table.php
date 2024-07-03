@@ -13,6 +13,14 @@ return new class extends Migration
     {
         Schema::create('partenaires', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->string('dial_code');
+            $table->string('phone_number');
+            $table->string('phone');
+            $table->string('email');
+            $table->string('logo');
+            $table->string('password');
+            $table->string('url');
             $table->timestamps();
         });
     }
