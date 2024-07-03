@@ -21,7 +21,6 @@ return new class extends Migration
             $table->dateTime('date_fin')->nullable();
             $table->string('slug')->unique();
             $table->timestamps();
-
             $table->foreignId('offer_id')->nullable();
             $table->json('customers')->nullable();
         });

@@ -29,6 +29,7 @@ return new class extends Migration
             $table->string('slug')->unique();
             $table->Boolean('as_partenaire')->nullable();
             $table->foreignId('partenaire_id')->nullable();
+            $table->json('CentreInterets')->nullable();
             $table->timestamps();
         });
     }
