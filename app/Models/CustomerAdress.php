@@ -15,6 +15,7 @@ class CustomerAdress extends Model
         'name',
         'address_name',
         'latitude',
+        'customer_id',
         'longitude',
     ];
 

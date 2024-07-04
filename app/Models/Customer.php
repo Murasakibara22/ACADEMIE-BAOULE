@@ -11,12 +11,14 @@ use App\Models\SaveChapitre;
 use App\Models\ChapitreFollow;
 use App\Models\CustomerAdress;
 use App\Models\CustomerDevice;
+use Tymon\JWTAuth\Contracts\JWTSubject;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Customer extends Model
+class Customer extends Authenticatable implements JWTSubject
 {
     use HasFactory;
 
@@ -81,5 +83,28 @@ class Customer extends Model
 
     public function Avis() : HasMany{
         return $this->hasMany(Avis::class,'customer_id');
+    }
+
+
+
+
+    /**
+     * Get the identifier that will be stored in the subject claim of the JWT.
+     *
+     * @return mixed
+     */
+    public function getJWTIdentifier()
+    {
+        return $this->getKey();
+    }
+
+    /**
+     * Return a key value array, containing any custom claims to be added to the JWT.
+     *
+     * @return array
+     */
+    public function getJWTCustomClaims()
+    {
+        return [];
     }
 }
