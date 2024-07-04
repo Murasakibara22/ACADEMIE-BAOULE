@@ -13,7 +13,16 @@ return new class extends Migration
     {
         Schema::create('chapitres', function (Blueprint $table) {
             $table->id();
+            $table->string('libelle');
+            $table->text('description')->nullable();
+            $table->json('images')->nullable();
+            $table->string('langue')->default('français');
+            $table->string('link_pdf')->nullable();
+            $table->string('link_video')->nullable();
+            $table->string('slug')->unique();
             $table->timestamps();
+
+            $table->foreignId('cours_id')->constrained('cours')->onDelete('cascade');
         });
     }
 

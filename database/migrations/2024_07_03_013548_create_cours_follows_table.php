@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('cours_follows', function (Blueprint $table) {
             $table->id();
+            $table ->foreignId('customer_id')->constrained('customers')->onDelete('cascade');
+            $table ->foreignId('cours_id')->constrained('cours')->onDelete('cascade');
+            $table->integer('progession')->default(5);
+            $table->string('slug')->unique();
             $table->timestamps();
         });
     }

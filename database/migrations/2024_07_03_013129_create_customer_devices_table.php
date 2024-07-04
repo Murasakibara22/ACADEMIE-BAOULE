@@ -12,7 +12,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('customer_devices', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
+            $table->foreignId('customer_id')->constrained('customers')->onDelete('cascade');
+            $table->string('firebase_id');
+            $table->string('device_os')->nullable();
             $table->timestamps();
         });
     }
